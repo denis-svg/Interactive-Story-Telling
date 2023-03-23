@@ -15,7 +15,16 @@ content: text
 	| img
 	| choice
 	| var_op
+	| if
 	;
+
+if: '(' cond '?' ')';
+eval: expr ('='|'>'|'<'|'>''='|'<''='|'!''=') expr;
+cond:  eval
+	| cond 'or' cond
+	| cond 'and' cond
+	| '(' cond ')';
+
 
 var_op : '[' var_name '=' expr ']';
 
