@@ -18,7 +18,8 @@ content: text
 	| if
 	;
 
-if: '(' cond '?' ')';
+if: '(' cond '?' then')';
+then: goto;
 eval: expr ('='|'>'|'<'|'>''='|'<''='|'!''=') expr;
 cond:  eval
 	| cond 'or' cond
@@ -46,7 +47,8 @@ option_text: (ID|INT)*;
 knot_name: ID;
 var_name:ID|INT;
 img_name:IMG_NAME;
-text: ID|INT;
+text: (ID | INT | WS)+;
+
 
 EQ : '=' ;
 LPAREN : '('; 
